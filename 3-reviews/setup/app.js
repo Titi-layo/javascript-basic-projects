@@ -37,3 +37,78 @@ const reviews = [
       "Edison bulb put a bird on it humblebrag, marfa pok pok heirloom fashion axe cray stumptown venmo actually seitan. VHS farm-to-table schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby chic. ",
   },
 ];
+
+
+const img = document.getElementById("person-img")
+const author = document.getElementById("author")
+const job = document.getElementById("job")
+const info = document.getElementById("info")
+const prevBtn = document.querySelector(".prev-btn")
+const nextBtn = document.querySelector(".next-btn")
+const randomBtn = document.querySelector(".random-btn")
+let index = 1
+let choice
+
+
+window.addEventListener('DOMContentLoaded', function(){
+
+  author.textContent = reviews[3].name
+  job.textContent = reviews[3].job
+  info.textContent = reviews[3].text
+  img.src = reviews[3].img
+
+
+
+});
+
+
+prevBtn.addEventListener('click',function()
+{
+  
+   choice = reviews.filter(ind => ind.id === index - 1
+  )
+
+  if (choice.length === 1)
+  {
+    index--
+    author.textContent = choice[0].name
+    job.textContent = choice[0].job
+    info.textContent = choice[0].text
+    img.src = choice[0].img
+  }
+});
+
+
+nextBtn.addEventListener('click',function()
+{
+  
+   choice = reviews.filter(ind => ind.id === index + 1
+  )
+
+  
+
+  if (choice.length === 1)
+  {
+    index++
+    author.textContent = choice[0].name
+    job.textContent = choice[0].job
+    info.textContent = choice[0].text
+    img.src = choice[0].img
+  }
+}
+
+);
+
+
+randomBtn.addEventListener('click',function()
+{
+  
+let random 
+random = Math.floor(Math.random() * reviews.length)
+  
+    author.textContent = reviews[random].name
+    job.textContent = reviews[random].job
+    info.textContent = reviews[random].text
+    img.src = reviews[random].img
+  
+});
