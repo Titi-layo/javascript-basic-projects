@@ -8,12 +8,12 @@
 const btn2 =   document.getElementsByClassName("nav-toggle")
 const btn =  document.querySelector(".nav-toggle")
 const links = document.querySelector("ul")
-console.log(btn2)
+
 btn.addEventListener('click',function()
 {
-    if(links.className === "links")
-    links.className = "links show-links"
+    if(links.classList.contains("show-links"))
+    links.classList.remove("show-links") 
 
     else
-    links.className = "links"
+    links.classList.add("show-links")
 })
