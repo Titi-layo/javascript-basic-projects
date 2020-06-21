@@ -52,10 +52,7 @@ let index = 3
 
 window.addEventListener('DOMContentLoaded', function(){
 
-  author.textContent = reviews[3].name
-  job.textContent = reviews[3].job
-  info.textContent = reviews[3].text
-  img.src = reviews[3].img
+  showPerson()
 
 });
 
