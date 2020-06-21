@@ -84,18 +84,14 @@ nextBtn.addEventListener('click',function()
 );
 
 
-/*randomBtn.addEventListener('click',function()
+randomBtn.addEventListener('click',function()
 {
   
-let random 
-random = Math.floor(Math.random() * reviews.length)
+
+index = Math.floor(Math.random() * reviews.length)
+showPerson()
   
-    author.textContent = reviews[random].name
-    job.textContent = reviews[random].job
-    info.textContent = reviews[random].text
-    img.src = reviews[random].img
-  
-});*/
+});
 
 
 function showPerson()
