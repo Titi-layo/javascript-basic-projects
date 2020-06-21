@@ -46,8 +46,8 @@ const info = document.getElementById("info")
 const prevBtn = document.querySelector(".prev-btn")
 const nextBtn = document.querySelector(".next-btn")
 const randomBtn = document.querySelector(".random-btn")
-let index = 1
-let choice
+let index = 3
+
 
 
 window.addEventListener('DOMContentLoaded', function(){
@@ -57,50 +57,37 @@ window.addEventListener('DOMContentLoaded', function(){
   info.textContent = reviews[3].text
   img.src = reviews[3].img
 
-
-
 });
 
 
 prevBtn.addEventListener('click',function()
 {
   
-   choice = reviews.filter(ind => ind.id === index - 1
-  )
+  index--
 
-  if (choice.length === 1)
-  {
-    index--
-    author.textContent = choice[0].name
-    job.textContent = choice[0].job
-    info.textContent = choice[0].text
-    img.src = choice[0].img
+  if (index < 0)
+  {   
+    index = 0
   }
+
+  showPerson()
 });
 
 
 nextBtn.addEventListener('click',function()
 {
-  
-   choice = reviews.filter(ind => ind.id === index + 1
-  )
-
-  
-
-  if (choice.length === 1)
-  {
     index++
-    author.textContent = choice[0].name
-    job.textContent = choice[0].job
-    info.textContent = choice[0].text
-    img.src = choice[0].img
-  }
+    if(index >= reviews.length)
+    {
+      index = 0
+    }
+    showPerson()
 }
 
 );
 
 
-randomBtn.addEventListener('click',function()
+/*randomBtn.addEventListener('click',function()
 {
   
 let random 
@@ -111,4 +98,13 @@ random = Math.floor(Math.random() * reviews.length)
     info.textContent = reviews[random].text
     img.src = reviews[random].img
   
-});
+});*/
+
+
+function showPerson()
+{
+    author.textContent = reviews[index].name
+    job.textContent = reviews[index].job
+    info.textContent = reviews[index].text
+    img.src = reviews[index].img
+}
