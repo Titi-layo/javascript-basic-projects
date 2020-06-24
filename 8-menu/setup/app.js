@@ -75,26 +75,22 @@ const menu = [
 
 
 const sectionCenter = document.querySelector(".section-center")
-const sectionCenter2 = document.getElementsByClassName("section-center")
-const btns = document.querySelectorAll(".filter-btn")
 let btnDisplay = menu
+const btnContainer  = document.querySelector(".btn-container")
 
 window.addEventListener('DOMContentLoaded',function(){
+
+  displayButtons(menu)
   displayMenuitems(menu)
+  
+  
 }); 
 
 
-btns.forEach(function(btn)
-  {
-    btn.addEventListener('click',function(){
-        btnDisplay = menu.filter(val =>
-        val.category === btn.textContent || btn.textContent === "all")
-        displayMenuitems(btnDisplay)
-        })
+const btn2 = document.getElementsByClassName("filter-btn")
 
-    
-  })
-  
+
+
 
   function displayMenuitems(menuItems){
 
@@ -124,3 +120,38 @@ btns.forEach(function(btn)
 
 
 
+function displayButtons(menus)
+{
+  let categories = []
+  let displayBtns
+  displayBtns = menus.map(function(menuItem) {
+    
+      if(categories.indexOf(menuItem.category) === -1)
+      {
+        categories.push(menuItem.category)
+        return `<button class="filter-btn" type="button">${menuItem.category}</button>`;
+        
+      }
+    
+  })
+  
+  displayBtns.push(`<button class="filter-btn" type="button">all</button>`)
+    
+
+  displayBtns = displayBtns.join("")
+  btnContainer.innerHTML = displayBtns
+  const btns = document.querySelectorAll(".filter-btn")
+
+  btns.forEach(function(btn)
+  {
+    btn.addEventListener('click',function(){
+        btnDisplay = menu.filter(val =>
+        val.category === btn.textContent || btn.textContent === "all")
+        displayMenuitems(btnDisplay)
+        console.log("Hi")
+        })
+
+    
+  })
+  
+}
