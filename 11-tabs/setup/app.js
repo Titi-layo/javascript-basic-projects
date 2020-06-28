@@ -1,7 +1,29 @@
 const btns = document.querySelectorAll(".tab-btn")
 const content = document.querySelectorAll(".content")
+const about = document.querySelector(".about")
 
-btns.forEach(function(btn){
+about.addEventListener('click',function(e)
+{
+    const id = e.target.dataset.id
+
+    if(id)
+    {
+        btns.forEach(function(btn){
+           
+                btn.classList.remove("active")
+            })
+            e.target.classList.add("active")
+
+            content.forEach(function(item){
+                item.classList.remove("active")
+            })
+
+            const element = document.getElementById(id)
+            element.classList.add("active")
+    }
+})
+
+/*btns.forEach(function(btn){
     btn.addEventListener('click',function(e)
     {
         btns.forEach(function(btn){
@@ -28,4 +50,4 @@ btns.forEach(function(btn){
        
     }
     )
-})
+})*/
